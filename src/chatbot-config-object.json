@@ -1,0 +1,175 @@
+{
+    "schema": {
+      "id": "rhbcrcd",
+      "title": "Apply for RHB Credit Card online with RinggitPlus"
+    },
+    "pageConfig": {
+      "step": 1,
+      "eTag": "982b08750946a6e560d6d703e08aa0f29a295cf7",
+      "screens": [
+        {
+          "type": "hero",
+          "buttonLabel": "Learn more",
+          "content": {
+            "logo": {
+              "src": "/data/rhbcrcd/images/logo-RHB.png",
+              "alt": "RHB logo"
+            },
+            "title": "A Great Range <br/>of Credit Cards",
+            "subtitle": "for every lifestyle",
+            "cards": [
+              {
+                "src": "/data/rhbcrcd/images/cards/1-Smart-Value-Visa.png",
+                "name": "Smart Value Visa"
+              },
+              {
+                "src": "/data/rhbcrcd/images/cards/2-Visa-Signature.png",
+                "name": "Visa Signature"
+              },
+              {
+                "src": "/data/rhbcrcd/images/cards/3-Platinum-Visa.png",
+                "name": "Platinum Visa"
+              },
+              {
+                "src": "/data/rhbcrcd/images/cards/4-Islamic-Smart-Value.png",
+                "name": "Islamic Smart Value"
+              },
+              {
+                "src": "/data/rhbcrcd/images/cards/5-MyEG.png",
+                "name": "MyEg"
+              },
+              {
+                "src": "/data/rhbcrcd/images/cards/6-SOGO.png",
+                "name": "SOGO"
+              },
+              {
+                "src": "/data/rhbcrcd/images/cards/9-Visa-Infinite.png",
+                "name": "Visa Infinite"
+              },
+              {
+                "src": "/data/rhbcrcd/images/cards/14-Islamic-Platinum.png",
+                "name": "Islamic Platinum"
+              },
+              {
+                "src": "/data/rhbcrcd/images/cards/15-World-MasterCard.png",
+                "name": "World MasterCard"
+              }
+            ]
+          }
+        },
+        {
+          "type": "steps",
+          "buttonLabel": "Next",
+          "content": {
+            "title": "Get Credit Card in 3 simple steps",
+            "steps": [
+              {
+                "title": "Simple Chat",
+                "subtitle": "Application"
+              },
+              {
+                "title": "Submit",
+                "subtitle": "Documents"
+              },
+              {
+                "title": "Get Card",
+                "subtitle": "At Nearest Branch"
+              }
+            ]
+          }
+        },
+        {
+          "type": "testimonials",
+          "buttonLabel": "Apply Now",
+          "header": "RHB Bank",
+          "footer": true,
+          "content": {
+            "testimonials": [
+              {
+                "avatar": "/data/jcl/images/testimonials/01/",
+                "name": "Kevin Yuen",
+                "comment":
+                  "My experience with RinggitPlus was awesome and excellent; love it very much 😎😍",
+                "date": "25 Nov 2017",
+                "link": "https://www.facebook.com/RinggitPlus/posts/860402740782027"
+              },
+              {
+                "avatar": "/data/jcl/images/testimonials/02/",
+                "name": "Rich ktk",
+                "comment":
+                  "Awesome RinggitPlus! This is a good platform to applying for a credit card.",
+                "date": "6 Aug 2017",
+                "link": "https://www.facebook.com/richie.kueh/posts/10214197360112289:0"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "chatConfig": {
+      "tenant": "ringgitplus",
+      "initialMessage": "Apply for RHB Credit Card",
+      "top": {
+        "hidden": true,
+        "name": "Guest",
+        "tenant": "ringgitplus"
+      },
+      "transcript": {
+        "bubble": {
+          "background": "rgb(0, 85, 161)",
+          "color": "white"
+        },
+        "fromMeBubble": {
+          "background": "#f2f2f2",
+          "color": "black"
+        },
+        "url": {
+          "color": "rgb(0, 85, 161)"
+        },
+        "postback": {
+          "color": "rgb(0, 85, 161)"
+        }
+      },
+      "bottom": {
+        "showMenu": false,
+        "history": false,
+        "showCamera": false,
+        "tnc": {
+          "links": {
+            "campaign": "https://media.ringgitplus.com/creatives/05007175a9_1519893656730/campaign-term-and-conditions.pdf",
+            "ringgitplus": "https://ringgitplus.com/en/terms-of-use.html",
+            "privacy": "https://ringgitplus.com/en/privacy-policy.html"
+          },
+          "show": true,
+          "hideAttempts": 2,
+          "style": {}
+        },
+        "photoCamera": {
+          "display": "none"
+        },
+        "sendButton": {
+          "color": "rgb(0, 85, 161)",
+          "borderColor": "rgb(0, 85, 161)"
+        },
+        "list": {
+          "borderColor": "rgb(0, 85, 161)",
+          "background": "white",
+          "color": "rgb(0, 85, 161)",
+          "width": "auto",
+          "padding": "4px 12px",
+          "borderRadius": "15px"
+        },
+        "rule": {
+          "backgroundColor": "pink"
+        },
+        "note": {
+          "color": "pink"
+        }
+      },
+      "shadeStyle": {
+        "backgroundColor": "#fff",
+        "color": "#fafafa"
+      }
+    }
+  }
+  

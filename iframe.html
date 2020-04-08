@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>TsChatbot Host</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+  <!-- <link rel="stylesheet" type="text/css" media="screen" href="./dist/main.css" /> -->
+  <style type="text/css">@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,400,700);</style>
+  <link rel="stylesheet" href="chatbot.css" />
+</head>
+<body>
+  <div id="no-landscape">
+    <div>
+      <p>Landscape mode is not supported.</p>
+      <p>Kindly rotate back to portrait mode.</p>
+    </div>
+  </div>
+  <div id="ChatContainer">
+    <!-- render here -->
+    <div class="offline-notice">
+      You are offline
+    </div>
+    <section id="transcript-area">
+      <ol id="transcript-area-ol"></ol>
+      <footer id="privacy-agreement"></footer>
+    </section>
+    <ul role="menu" id="quick-message-actions"></ul>
+    <form id="user-actions-container">
+      <input autocomplete="off" id="user-reply" name="_UserReply" type="text" placeholder="Type a message..."/>
+      <button disabled type="submit" id="reply-submit">Send</button>
+      <input type="file" id="file-uploader" multiple accept="image/*,.pdf" style="display:none"/>
+    </form>
+  </div>
+  <section id="plugin-area">
+    <div>
+      <iframe
+        src=""
+        frameborder="0">
+      </iframe>
+    </div>
+  </section>
+
+  <script type='text/javascript' src="css_variables.js"></script>
+  <script src="./dist/embedded-chatbot.bundle.js"></script>
+</body>
+</html>

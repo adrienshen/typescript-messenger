@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title></title>
+  <script>
+    var source = new EventSource('/chatbot');
+    source.onmessage = function(e) {
+      let data = JSON.parse(e.data);
+      // console.log(data);
+      document.body.innerHTML += data.text + '<br>';
+    };
+  </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TsChatbot Target</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+
+    <script>
+        // first script tag
+    </script>
+    <style>
+        #ChatContainer {
+            position: absolute;
+            right: 0;
+        }
+
+        .iframe-ctn {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            top: 0;
+            overflow-y: hidden;
+        }
+    </style>
+
+    <style id="customStyles">
+        /* li {
+            color: purple !important;
+            font-weight: 800;
+        }
+        a {
+            color: yellowgreen !important;
+        } */
+    </style>
+
+</head>
+<body>
+    <div>
+        <!-- <button id="sendMessage">
+            Send event
+        </button> -->
+        <!-- <button id="start">
+            Load iframe
+        </button>
+        <button id="setGtm">
+            Set Gtm
+        </button> -->
+        <!-- <button onclick="sorai('hide')">
+            Hide
+        </button>
+        <button onclick="sorai('show')">
+            Show
+        </button> -->
+    </div>
+
+    <div id="chatContainer"></div>
+<script>
+    // do other client scripts here.
+</script>
+<script type='text/javascript' charset='utf-8'>
+// SoraAsyncSnippet
+    (function(s, o, r, a, c, b) {
+        s['SoraObject'] = a;
+        s[a] = s[a] || function() {
+            (s[a].q = s[a].q || []).push(arguments);
+        }
+        s[a].s = (r.indexOf("http") > -1) ? new URL(r) : r;
+
+        c = o.createElement('script');
+        c.type = 'text/javascript';
+        c.async = true;
+        c.src = r;
+        b = o.getElementsByTagName('script')[0];
+        b.parentNode.insertBefore(c, b);
+    } (window, document, 'dist/sorai-client.bundle.js', 'sorai'));
+    sorai('init', {});
+</script>
+
+<script>
+    // Add tenant
+    sorai("tenant", "ringgitplus");
+
+    // Attach
+    sorai('attach');
+
+    // Upload function
+    sorai('upload', true);
+
+    // Sending messages
+    sorai('send', 'Apply for RHB Credit Card');
+    // sorai('send', 'Another message...');
+
+    // Styling
+    // sorai('style', {cssLink: "../chat-styles/a.css"});
+    sorai('style', {styleId: "customStyles"});
+
+    // Term and Conditions
+    let tnc = `By typing your contact information, you agree to RinggitPlus <a href='https://ringgitplus.com'>terms & conditions</a> and the <a href='https://ringgitplus.com'>campaign terms & conditions</a>. We respect your <a href='https://ringgitplus.com'>privacy</a> and are committed to handle your personal information safely and responsibly.`
+    sorai('tnc', tnc);
+
+    // Hooks
+    sorai('onMessage', payload => {
+      console.log("message from chatbot!", payload.message[0].text);
+    });
+
+    // sorai('onGtmEvent', payload => {
+    //   console.log("gtm event from chatbot: ", payload);
+    // })
+
+    // sorai('beforeSend', message => {
+    //     console.log("beforeSend hook", message);
+    // });
+
+    // sorai('afterSend', message => {
+    //     console.log("afterSend hook", message);
+    // });
+
+    sorai('gtm', 'GTM-NNDMDSD');
+    // dataLayer = {
+    //   push: function()  {
+    //     //
+    //   }
+    // }
+
+
+    // When ready...
+    window.addEventListener("load",function() {
+        // Set a timeout...
+        setTimeout(function(){
+            // Hide the address bar!
+            window.scrollTo(0, 1);
+        }, 0);
+    });
+
+
+    // document.getElementById("sendMessage").addEventListener("click", e => sorai('send', "message from client "), false);
+</script>
+
+
+<script src="dist/dev-panel.bundle.js" type='text/javascript' charset='utf-8'></script>
+
+
+<script>
+  const DevPanel = function(sorai) {
+    this.devSorai = sorai;
+
+    this.generateUserInterface();
+    this.mountEventListeners();
+    this.soraiLogs();
+    
+    window.open = messageOpenEvent => {
+      console.log("messageOpenEvent: ", messageOpenEvent);
+      const openLinksEl = document.getElementById("openlink-count");
+      openLinksEl.innerText = openLinksEl.innerText/1 + 1;
+      this.appendSoraLogEventLine("LinkOpenWindow", messageOpenEvent);
+    }
+
+  }
+
+  DevPanel.prototype.generateUserInterface = function() {
+    console.log("this.devSorai: ", this.devSorai);
+    // sorai("send", "From [DevPanel]: is active on this client");
+    let devEl = document.createElement("div");
+        devEl.style.position = "fixed";
+        devEl.style.left = "10px";
+        devEl.style.width = "300px";
+        devEl.style.height = "auto";
+        devEl.style.border = "2px solid #333";
+        devEl.style.background = "#4caf50";
+        devEl.style.padding = "1rem";
+        devEl.style.zIndex = 10;
+
+    let devHtml = `
+      <style>
+      #tnc-input-dev,
+      #styling-input-dev,
+      #send-message-dev {
+        font-family: monospace;
+        background: #333;
+        color: #eee;
+        box-sizing: border-box;
+        width: 75%;
+        height: 80px;
+        padding: 1rem;
+        margin-bottom: .5rem;
+      }
+
+      #send-message-dev {
+        height: 40px;
+      }
+      
+      #message-hooks,
+      #gtm-hooks,
+      #openlink-hooks {
+        text-align: right;
+      }
+
+      #log-console {
+        height: 200px;
+        width: 100%;
+        background: #333;
+        color: white;
+        padding: .5rem;
+        font-family: monospace;
+        box-sizing: border-box;
+        overflow-y: scroll;
+      }
+
+      #log-console li {
+        list-style-type: none;
+      }
+
+      h1 {
+        margin: 0rem;
+        font-size: 1.5rem;
+      }
+      </style>
+      <h1>SoraiDevPanel</h1>
+      <input placeholder="send message" type="text" id="send-message-dev" />
+        <button id="send-message">send</button><br />
+      <textarea id="tnc-input-dev" placeholder="type tnc"></textarea>
+        <button id="send-tnc">send tnc</button><br />
+      <textarea id="styling-input-dev" placeholder="type valid css"></textarea>
+        <button id="send-css">send css</button>
+
+      <div id="event-hooks">
+        <h3>Event Hooks</h3>
+        <div id="gtm-hooks">
+          <button id="set-notifications">set notification hook</button> |
+          <div
+            id="notifications-count">Message notifications: <span id="notif-count-value">0</span>
+          </div>
+        </div>
+        <div id="gtm-hooks">Gtm events: <span id="gtm-count">0</span></div>
+        <div id="openlink-hooks">Open link hooks: <span id="openlink-count">0</span></div>
+      </div>
+
+      <div id="log-console">
+        <ul></ul>
+      </div>
+    `
+    devEl.innerHTML = devHtml;
+    devEl.id = "DevPanel";
+    document.body.appendChild(devEl);
+  }
+
+  DevPanel.prototype.mountEventListeners = () => {
+    const sendMessageButton = document.getElementById("send-message");
+    const sendTncButton = document.getElementById("send-tnc");
+    const sendCssButton = document.getElementById("send-css");
+
+    sendMessageButton.addEventListener("click", () => {
+      const textMessage = document.getElementById("send-message-dev").value;
+      sorai("send", textMessage);
+      document.getElementById("send-message-dev").value = "";
+    });
+
+    sendTncButton.addEventListener("click", () => {
+      const tncContents = document.getElementById("tnc-input-dev");
+      console.log("tncContents: ", tncContents.value);
+      sorai("tnc", tncContents.value || "example tnc from dev panel");
+    });
+
+    sendCssButton.addEventListener("click", () => {
+      let cssContents = document.getElementById("styling-input-dev").value;
+      let customStyleElContents = document.getElementById("customStyles");
+      customStyleElContents.innerHTML = cssContents;
+      // console.log("customStyleElContents: ", customStyleElContents);
+      sorai('style', {styleId: "customStyles"});
+    });
+
+    document.getElementById("set-notifications").addEventListener("click", () => {
+      console.log("value of this: ", this);
+      let notificationsCount = 0;
+      sorai('onMessage', payload => {
+        console.log("message from chatbot to devpanel!", payload.message[0].text);
+        console.log("value of this inside handler: ");
+
+        notificationsCount ++;
+        document.getElementById("notifications-count").innerText = `Message notifications: ${notificationsCount}`;
+        
+        let timestamp = "ts." + Date.now();
+        let textLogEl = document.createElement("li");
+            textLogEl.innerText = timestamp + ": [chatbot-message]: " + payload.message[0].text;
+            textLogEl.id = "event-log";
+        document.getElementById("log-console").appendChild(textLogEl);
+        
+        let logConsole = document.getElementById("log-console");
+        logConsole.scrollBy({
+          top: logConsole.scrollHeight,
+          behavior: 'smooth',
+        });
+      });
+      console.log("Notifications set!");
+      document.getElementById("set-notifications").innerText = "notifications listening";
+      document.getElementById("set-notifications").style.background = "green";
+      document.getElementById("set-notifications").style.color = "white";
+      document.getElementById("set-notifications").disabled = true;
+    });
+  }
+
+  DevPanel.prototype.soraiLogs = function() {
+    let self = this;
+    sorai("onGtmEvent", payload => {
+      console.log("DevPanel: ", payload);
+      self.appendSoraLogEventLine(payload.event, payload.message);
+      self.incrementGtmCount();
+    });
+  }
+
+  DevPanel.prototype.incrementGtmCount = () => {
+    const gtmCountEl = document.getElementById("gtm-count");
+    let count = gtmCountEl.innerText;
+    gtmCountEl.innerText = count/1 + 1;
+  }
+
+  DevPanel.prototype.appendSoraLogEventLine = (eventType, messagePayloadString) => {
+    let logConsole = document.getElementById("log-console");
+    let textLogEl = document.createElement("li");
+      textLogEl.className = "event-log";    
+      textLogEl.innerText = Date.now() + `: [${eventType}]: ` + messagePayloadString;
+    logConsole.appendChild(textLogEl);
+  }
+
+  // DevPanel.prototype.handleNotifications = newNotificationMessage => {
+  //   console.log("new notification! ", newNotificationMessage);
+  //   this.notificationsCount ++;
+  //   document.getElementById("notifications-count").innerText = `Message notifications: ${this.notificationsCount}`;
+  // }
+
+  if (window.innerWidth > 800) {
+    // const devPanel = new DevPanel(sorai);
+  }
+</script>
+</body>
+</html>

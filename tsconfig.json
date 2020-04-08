@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    // "strict": true,
+    "alwaysStrict": false,
+    "target": "es6",
+    "lib": [
+      "dom",
+      "es2015",
+      "es2016"
+    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowJs": false,
+    "noImplicitAny": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowUnreachableCode": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "importHelpers": true,
+  },
+  "include": ["src/**/*", "__tests__/**/*"]
+}
