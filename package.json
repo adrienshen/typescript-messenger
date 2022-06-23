@@ -28,7 +28,7 @@
     "@types/lodash": "^4.14.106",
     "@types/node": "^8.0.53",
     "avoriaz": "^6.0.1",
-    "codecov": "^3.0.0",
+    "codecov": "^3.8.3",
     "compression": "^1.7.2",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
